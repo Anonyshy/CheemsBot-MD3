@@ -43,7 +43,7 @@ const {
 
 const store = makeInMemoryStore({ logger: pino().child({ level: 'silent', stream: 'store' }) })
 
-async function startXeonBotInc() {
+/*async function startXeonBotInc() {
 console.log(color(figlet.textSync('Cheems Bot-MD', {
 		font: 'Pagga',
 		horizontalLayout: 'default',
@@ -98,6 +98,7 @@ require("./XeonCheems3")(XeonBotInc, m, chatUpdate, store)
 console.log(err)
 }
 })
+*/
 //GRUP UPDATE
 XeonBotInc.ev.on('groups.update', async pea => {
        //console.log(pea)
@@ -109,18 +110,18 @@ XeonBotInc.ev.on('groups.update', async pea => {
        }
        let wm_fatih = { url : ppgc }
        if (pea[0].announce == true) {
-       XeonBotInc.send5ButImg(pea[0].id, `「 Group Settings Changed 」\n\nThe group has been closed by admin, Now only admin can send messages !`, `${botname}`, wm_fatih, [])
+       XeonBotInc.send5ButImg(pea[0].id, `「 Group Settings Changed 」\n\nThe group has been closed by admin, Now only admin can send messages !`, wm_fatih, [])
        } else if(pea[0].announce == false) {
-       XeonBotInc.send5ButImg(pea[0].id, `「 Group Settings Changed 」\n\nThe group has been opened by admin, Now participants can send messages !`, `${botname}`, wm_fatih, [])
+       XeonBotInc.send5ButImg(pea[0].id, `「 Group Settings Changed 」\n\nThe group has been opened by admin, Now participants can send messages !`, wm_fatih, [])
        } else if (pea[0].restrict == true) {
-       XeonBotInc.send5ButImg(pea[0].id, `「 Group Settings Changed 」\n\nGroup info has been restricted, Now only admin can edit group info !`, `${botname}`, wm_fatih, [])
+       XeonBotInc.send5ButImg(pea[0].id, `「 Group Settings Changed 」\n\nGroup info has been restricted, Now only admin can edit group info !`,  wm_fatih, [])
        } else if (pea[0].restrict == false) {
-       XeonBotInc.send5ButImg(pea[0].id, `「 Group Settings Changed 」\n\nGroup info has been opened, Now participants can edit group info !`, `${botname}`, wm_fatih, [])
+       XeonBotInc.send5ButImg(pea[0].id, `「 Group Settings Changed 」\n\nGroup info has been opened, Now participants can edit group info !`,  wm_fatih, [])
        } else {
-       XeonBotInc.send5ButImg(pea[0].id, `「 Group Settings Changed 」\n\nGroup Subject has been changed to *${pea[0].subject}*`, `${botname}`, wm_fatih, [])
+       XeonBotInc.send5ButImg(pea[0].id, `「 Group Settings Changed 」\n\nGroup Subject has been changed to *${pea[0].subject}*`,wm_fatih, [])
      }
     })
-
+/*
 //randoming function
 function pickRandom(list) {
 return list[Math.floor(list.length * Math.random())]
@@ -328,7 +329,7 @@ XeonBotInc.sendMessage(anu.id, buttonMessage, {quoted:unicorndoc})
     })
 
     XeonBotInc.ev.on('creds.update', saveState)
-
+*/
     // Add Other
    
     /** Send Button 5 Image
@@ -341,6 +342,7 @@ XeonBotInc.sendMessage(anu.id, buttonMessage, {quoted:unicorndoc})
      * @param {*} options
      * @returns
      */
+/*
     XeonBotInc.send5ButImg = async (jid , text = '' , footer = '', img, but = [], thumb, options = {}) =>{
         let message = await prepareWAMessageMedia({ image: img, jpegThumbnail:thumb }, { upload: XeonBotInc.waUploadToServer })
         var template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
@@ -355,7 +357,7 @@ XeonBotInc.sendMessage(anu.id, buttonMessage, {quoted:unicorndoc})
             }), options)
             XeonBotInc.relayMessage(jid, template.message, { messageId: template.key.id })
     }
-
+*/
     /**
      * 
      * @param {*} jid 
@@ -365,6 +367,7 @@ XeonBotInc.sendMessage(anu.id, buttonMessage, {quoted:unicorndoc})
      * @param {*} quoted 
      * @param {*} options 
      */
+/*
     XeonBotInc.sendButtonText = (jid, buttons = [], text, footer, quoted = '', options = {}) => {
         let buttonMessage = {
             text,
@@ -384,7 +387,7 @@ XeonBotInc.sendMessage(anu.id, buttonMessage, {quoted:unicorndoc})
      * @param {*} options 
      * @returns 
      */
-    XeonBotInc.sendText = (jid, text, quoted = '', options) => XeonBotInc.sendMessage(jid, { text: text, ...options }, { quoted })
+    //XeonBotInc.sendText = (jid, text, quoted = '', options) => XeonBotInc.sendMessage(jid, { text: text, ...options }, { quoted })
 
     /**
      * 
@@ -395,11 +398,11 @@ XeonBotInc.sendMessage(anu.id, buttonMessage, {quoted:unicorndoc})
      * @param {*} options 
      * @returns 
      */
-    XeonBotInc.sendImage = async (jid, path, caption = '', quoted = '', options) => {
+    /*XeonBotInc.sendImage = async (jid, path, caption = '', quoted = '', options) => {
 	let buffer = Buffer.isBuffer(path) ? path : /^data:.*?\/.*?;base64,/i.test(path) ? Buffer.from(path.split`,`[1], 'base64') : /^https?:\/\//.test(path) ? await (await getBuffer(path)) : fs.existsSync(path) ? fs.readFileSync(path) : Buffer.alloc(0)
         return await XeonBotInc.sendMessage(jid, { image: buffer, caption: caption, ...options }, { quoted })
     }
-
+*/
     /**
      * 
      * @param {*} jid 
@@ -409,11 +412,11 @@ XeonBotInc.sendMessage(anu.id, buttonMessage, {quoted:unicorndoc})
      * @param {*} options 
      * @returns 
      */
-    XeonBotInc.sendVideo = async (jid, path, caption = '', quoted = '', gif = false, options) => {
+/*    XeonBotInc.sendVideo = async (jid, path, caption = '', quoted = '', gif = false, options) => {
         let buffer = Buffer.isBuffer(path) ? path : /^data:.*?\/.*?;base64,/i.test(path) ? Buffer.from(path.split`,`[1], 'base64') : /^https?:\/\//.test(path) ? await (await getBuffer(path)) : fs.existsSync(path) ? fs.readFileSync(path) : Buffer.alloc(0)
         return await XeonBotInc.sendMessage(jid, { video: buffer, caption: caption, gifPlayback: gif, ...options }, { quoted })
     }
-
+*/
     /**
      * 
      * @param {*} jid 
@@ -423,11 +426,11 @@ XeonBotInc.sendMessage(anu.id, buttonMessage, {quoted:unicorndoc})
      * @param {*} options 
      * @returns 
      */
-    XeonBotInc.sendAudio = async (jid, path, quoted = '', ptt = false, options) => {
+/*    XeonBotInc.sendAudio = async (jid, path, quoted = '', ptt = false, options) => {
         let buffer = Buffer.isBuffer(path) ? path : /^data:.*?\/.*?;base64,/i.test(path) ? Buffer.from(path.split`,`[1], 'base64') : /^https?:\/\//.test(path) ? await (await getBuffer(path)) : fs.existsSync(path) ? fs.readFileSync(path) : Buffer.alloc(0)
         return await XeonBotInc.sendMessage(jid, { audio: buffer, ptt: ptt, ...options }, { quoted })
     }
-
+*/
     /**
      * 
      * @param {*} jid 
@@ -436,7 +439,7 @@ XeonBotInc.sendMessage(anu.id, buttonMessage, {quoted:unicorndoc})
      * @param {*} options 
      * @returns 
      */
-    XeonBotInc.sendTextWithMentions = async (jid, text, quoted, options = {}) => XeonBotInc.sendMessage(jid, { text: text, contextInfo: { mentionedJid: [...text.matchAll(/@(\d{0,16})/g)].map(v => v[1] + '@s.whatsapp.net') }, ...options }, { quoted })
+ //   XeonBotInc.sendTextWithMentions = async (jid, text, quoted, options = {}) => XeonBotInc.sendMessage(jid, { text: text, contextInfo: { mentionedJid: [...text.matchAll(/@(\d{0,16})/g)].map(v => v[1] + '@s.whatsapp.net') }, ...options }, { quoted })
 
     /**
      * 
@@ -446,7 +449,7 @@ XeonBotInc.sendMessage(anu.id, buttonMessage, {quoted:unicorndoc})
      * @param {*} options 
      * @returns 
      */
-    XeonBotInc.sendImageAsSticker = async (jid, path, quoted, options = {}) => {
+  /*  XeonBotInc.sendImageAsSticker = async (jid, path, quoted, options = {}) => {
         let buff = Buffer.isBuffer(path) ? path : /^data:.*?\/.*?;base64,/i.test(path) ? Buffer.from(path.split`,`[1], 'base64') : /^https?:\/\//.test(path) ? await (await getBuffer(path)) : fs.existsSync(path) ? fs.readFileSync(path) : Buffer.alloc(0)
         let buffer
         if (options && (options.packname || options.author)) {
@@ -458,7 +461,7 @@ XeonBotInc.sendMessage(anu.id, buttonMessage, {quoted:unicorndoc})
         await XeonBotInc.sendMessage(jid, { sticker: { url: buffer }, ...options }, { quoted })
         return buffer
     }
-
+*/
     /**
      * 
      * @param {*} jid 
@@ -467,7 +470,7 @@ XeonBotInc.sendMessage(anu.id, buttonMessage, {quoted:unicorndoc})
      * @param {*} options 
      * @returns 
      */
-    XeonBotInc.sendVideoAsSticker = async (jid, path, quoted, options = {}) => {
+  /*  XeonBotInc.sendVideoAsSticker = async (jid, path, quoted, options = {}) => {
         let buff = Buffer.isBuffer(path) ? path : /^data:.*?\/.*?;base64,/i.test(path) ? Buffer.from(path.split`,`[1], 'base64') : /^https?:\/\//.test(path) ? await (await getBuffer(path)) : fs.existsSync(path) ? fs.readFileSync(path) : Buffer.alloc(0)
         let buffer
         if (options && (options.packname || options.author)) {
@@ -502,7 +505,7 @@ XeonBotInc.sendMessage(anu.id, buttonMessage, {quoted:unicorndoc})
        else type = 'document'
        await XeonBotInc.sendMessage(jid, { [type]: { url: pathFile }, caption, mimetype, fileName, ...options }, { quoted, ...options })
        return fs.promises.unlink(pathFile)
-       }
+       }*/
     /**
      * 
      * @param {*} message 
@@ -510,7 +513,7 @@ XeonBotInc.sendMessage(anu.id, buttonMessage, {quoted:unicorndoc})
      * @param {*} attachExtension 
      * @returns 
      */
-    XeonBotInc.downloadAndSaveMediaMessage = async (message, filename, attachExtension = true) => {
+  /*  XeonBotInc.downloadAndSaveMediaMessage = async (message, filename, attachExtension = true) => {
         let quoted = message.msg ? message.msg : message
         let mime = (message.msg || message).mimetype || ''
         let messageType = message.mtype ? message.mtype.replace(/Message/gi, '') : mime.split('/')[0]
@@ -546,7 +549,7 @@ XeonBotInc.sendMessage(anu.id, buttonMessage, {quoted:unicorndoc})
      * @param {*} options 
      * @returns 
      */
-    XeonBotInc.copyNForward = async (jid, message, forceForward = false, options = {}) => {
+ /*   XeonBotInc.copyNForward = async (jid, message, forceForward = false, options = {}) => {
         let vtype
 		if (options.readViewOnce) {
 			message.message = message.message && message.message.ephemeralMessage && message.message.ephemeralMessage.message ? message.message.ephemeralMessage.message : (message.message || undefined)
@@ -626,7 +629,7 @@ XeonBotInc.sendMessage(anu.id, buttonMessage, {quoted:unicorndoc})
      * @param {*} path 
      * @returns 
      */
-    XeonBotInc.getFile = async (PATH, save) => {
+ /*   XeonBotInc.getFile = async (PATH, save) => {
         let res
         let data = Buffer.isBuffer(PATH) ? PATH : /^data:.*?\/.*?;base64,/i.test(PATH) ? Buffer.from(PATH.split`,`[1], 'base64') : /^https?:\/\//.test(PATH) ? await (res = await getBuffer(PATH)) : fs.existsSync(PATH) ? (filename = PATH, fs.readFileSync(PATH)) : typeof PATH === 'string' ? PATH : Buffer.alloc(0)
         //if (!Buffer.isBuffer(data)) throw new TypeError('Result is not a buffer')
